@@ -1,0 +1,69 @@
+body {
+  margin: 0;
+  background-color: #141414;
+  color: #fff;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  min-height: 100vh; 
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+section {
+  width: 100%; /* ocupa toda a largura disponível */
+  max-width: 600px; /* limita a largura máxima */
+  display: flex;
+  justify-content: center;
+  }
+
+nav {
+  display: flex;
+  gap: 2rem; /* espaço entre os perfis */
+}
+
+.profile {
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s; /* suaviza animações de transformação e sombra */
+}
+
+figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  width: 120px;
+  height: 120px;
+  border-radius: 2px;
+  object-fit: cover; /* mantém proporção da imagem */
+  margin-bottom: 0.5rem;
+  background-color: #222;
+  display: block;
+  border: 1px solid transparent; /* borda inicial invisível */
+}
+
+img:hover {
+  border: 1px solid #fff; /* Borda fica branca no hover */
+}
+
+figcaption {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  letter-spacing: 0.5px;
+}
