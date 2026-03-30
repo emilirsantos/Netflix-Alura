@@ -1,36 +1,82 @@
 body {
   margin: 0;
   background-color: #141414;
+  background-image: url(assets/Netflix-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: #fff;
   font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
   min-height: 100vh; 
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0; /* equivale a top/right/bottom/left: 0 */
+  background: rgba(20, 20, 20, 0.92); /* camada escura semi-transparente */
+  z-index: 0; /* fica atrás do conteúdo */
 }
 
 main {
+  position: relative; /* para ficar acima da camada escura */
+  z-index: 1; /* garante que o conteúdo fique acima do ::before */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: clamp(1.2rem, 5vw, 2.5rem); /* escala entre 1.5rem e 2.5rem */
   font-weight: bold;
-  margin-bottom: 2rem;
+  margin: 2rem;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 section {
   width: 100%; /* ocupa toda a largura disponível */
-  max-width: 600px; /* limita a largura máxima */
+  max-width: 560px; /* 4 colunas de ~120px + gaps */
   display: flex;
   justify-content: center;
+  padding: 0 1.5rem; /* padding lateral */
+  box-sizing: border-box;
   }
 
 nav {
-  display: flex;
-  gap: 2rem; /* espaço entre os perfis */
+  width: 100%;
+}
+
+nav ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colunas, cada uma no máximo 1fr */
+  gap: 1.5rem;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 2 colunas em telas pequenas */
+@media (max-width: 480px) {
+  nav ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 360px) {
+  nav ul {
+    gap: 1rem;
+  }
+
+  section {
+    padding: 0 1rem;
+  }
 }
 
 .profile {
@@ -47,9 +93,10 @@ figure {
 }
 
 img {
-  width: 120px;
-  height: 120px;
-  border-radius: 2px;
+  width: 100%; /* ocupa a coluna inteira */
+  height: auto;
+  aspect-ratio: 1 / 1; /* mantém quadrado sem height fixo */
+  border-radius: 100px;
   object-fit: cover; /* mantém proporção da imagem */
   margin-bottom: 0.5rem;
   background-color: #222;
@@ -58,12 +105,13 @@ img {
 }
 
 img:hover {
-  border: 1px solid #fff; /* Borda fica branca no hover */
+  border: 1px solid #fff; /* borda fica branca no hover */
 }
 
 figcaption {
-  font-size: 1.1rem;
+  font-size: clamp(0.75rem, 3vw, 1.1rem); /* escala entre 0.8rem e 1.1rem */
   font-weight: 500;
   margin-top: 0.5rem;
   letter-spacing: 0.5px;
+  text-align: center;
 }
